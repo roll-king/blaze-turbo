@@ -5,7 +5,6 @@ The KvStore store key/value pairs.
 
 use std::collections::HashMap;
 
-
 /// A simple key-value store implementation.
 ///
 /// This key-value store allows you to store and retrieve string values using string keys.
