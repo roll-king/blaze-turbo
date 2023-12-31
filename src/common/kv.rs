@@ -19,8 +19,8 @@ const MAX_USELESS_SIZE: u64 = 1024 * 1024;
 # Example
 ```
 use std::env;
-use kvs::{KvStore, Result};
-use crate::kvs::KvsEngine;
+use blaze_turbo::{KvStore, Result};
+use crate::blaze_turbo::KvsEngine;
 # fn try_main() -> Result<()> {
 
 let mut store = KvStore::open(env::current_dir()?)?;

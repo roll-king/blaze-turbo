@@ -1,5 +1,5 @@
-use blaze_turbo::thread_pool::{RayonThreadPool, SharedQueueThreadPool, ThreadPool};
 use blaze_turbo::{Client, KvServer, KvStore, Request, SledKvsEngine};
+use blaze_turbo::{RayonThreadPool, SharedQueueThreadPool, ThreadPool};
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion};
 use crossbeam_utils::sync::WaitGroup;
 use log::{warn, LevelFilter};
