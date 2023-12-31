@@ -98,7 +98,7 @@ jobs:
       - name: Generate artifacts name
         id: gen-name
         shell: bash
-        run: echo 'NAME=psh_internal-dev-${{ matrix.targets.alias }}' >> $GITHUB_OUTPUT
+        run: echo 'NAME=blaze_turbo-dev-${{ matrix.targets.alias }}' >> $GITHUB_OUTPUT
 
       - name: Generate binary extension
         id: gen-ext
