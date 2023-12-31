@@ -1,5 +1,4 @@
-use crate::common::kv_engine::KvsEngine;
-use crate::{KVStoreError, Result};
+use crate::{KVStoreError, KvsEngine, Result};
 use sled::Db;
 use std::path::PathBuf;
 
@@ -8,16 +7,20 @@ use std::path::PathBuf;
 ```
 use std::env;
 use blaze_turbo::{SledKvsEngine, Result};
-use blaze_turbo::KvsEngine;
+use crate::blaze_turbo::KvsEngine;
 # fn try_main() -> Result<()> {
+
 let mut store = SledKvsEngine::open(env::current_dir()?)?;
+
 store.set("1".to_owned(),"1".to_owned())?;
 assert_eq!(store.get("1".to_owned())?, Some("1".to_owned()));
+
 store.remove("1".to_owned())?;
 assert_eq!(store.get("1".to_owned())?, None);
 # Ok(())
 # }
 */
+#[derive(Clone)]
 pub struct SledKvsEngine {
     inner: Db,
 }
@@ -33,14 +36,14 @@ impl SledKvsEngine {
 
 impl KvsEngine for SledKvsEngine {
     /// Set the value of a string key to a string. Return an error if the value is not written successfully.
-    fn set(&mut self, key: String, value: String) -> Result<()> {
+    fn set(&self, key: String, value: String) -> Result<()> {
         self.inner.insert(key, value.into_bytes())?;
         // self.inner.flush()?;
         Ok(())
     }
 
     /// Get the string value of a string key. If the key does not exist, return None. Return an error if the value is not read successfully.
-    fn get(&mut self, key: String) -> Result<Option<String>> {
+    fn get(&self, key: String) -> Result<Option<String>> {
         Ok(self
             .inner
             .get(key)?
@@ -50,7 +53,7 @@ impl KvsEngine for SledKvsEngine {
     }
 
     /// Remove a given key. Return an error if the key does not exist or is not removed successfully.
-    fn remove(&mut self, key: String) -> Result<()> {
+    fn remove(&self, key: String) -> Result<()> {
         self.inner.remove(key)?.ok_or(KVStoreError::KeyNotFound)?;
         self.inner.flush()?;
         Ok(())
