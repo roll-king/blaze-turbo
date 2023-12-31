@@ -210,8 +210,7 @@ impl Reader {
 
         if let Entry::Vacant(entry) = readers.entry(position.file_number) {
             let new_reader = BufReader::new(File::open(
-                &self
-                    .dir_path
+                self.dir_path
                     .join(format!("data_{}.txt", position.file_number)),
             )?);
             entry.insert(new_reader);
@@ -221,7 +220,7 @@ impl Reader {
             .get_mut(&position.file_number)
             .expect("Can not find key in files but it is in memory");
         source_reader.seek(SeekFrom::Start(position.offset))?;
-        let data_reader = source_reader.take(position.length as u64);
+        let data_reader = source_reader.take(position.length);
         f(data_reader)
     }
 
@@ -372,8 +371,7 @@ impl Writer {
         self.current_file_number += 1;
         self.current_writer = BufWriterWithPosition::new(
             OpenOptions::new().create(true).append(true).open(
-                &self
-                    .dir_path
+                self.dir_path
                     .join(format!("data_{}.txt", self.current_file_number)),
             )?,
         )?;
