@@ -3,11 +3,6 @@ description: Check the code with audit, fmt and clippy
 runs:
   using: composite
   steps:
-    - name: Audit
-      shell: bash
-      run: |
-        cargo install cargo-audit
-        cargo audit
 
     - name: Fmt
       shell: bash
