@@ -1,5 +1,5 @@
-use crate::{KVStoreError, Result};
 use crate::common::kv_engine::KvsEngine;
+use crate::{KVStoreError, Result};
 use sled::Db;
 use std::path::PathBuf;
 
@@ -7,8 +7,8 @@ use std::path::PathBuf;
 # Example
 ```
 use std::env;
-use blade_turbo::{SledKvsEngine, Result};
-use blade_turbo::KvsEngine;
+use blaze_turbo::{SledKvsEngine, Result};
+use blaze_turbo::KvsEngine;
 # fn try_main() -> Result<()> {
 let mut store = SledKvsEngine::open(env::current_dir()?)?;
 store.set("1".to_owned(),"1".to_owned())?;

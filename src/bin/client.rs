@@ -1,6 +1,6 @@
+use blaze_turbo::{KVStoreError, Result};
+use blaze_turbo::{Request, Response};
 use clap::{arg, command, ArgMatches, SubCommand};
-use kvs::{KVStoreError, Result};
-use kvs::{Request, Response};
 use serde::Deserialize;
 use serde_json::de::IoRead;
 use serde_json::Deserializer;

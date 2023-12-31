@@ -1,6 +1,6 @@
+use blaze_turbo::{KvStore, KvsEngine, SledKvsEngine};
 use criterion::BatchSize::SmallInput;
 use criterion::{criterion_group, criterion_main, Criterion};
-use blade_turbo::{KvStore, KvsEngine, SledKvsEngine};
 use rand::prelude::*;
 use tempfile::TempDir;
 
