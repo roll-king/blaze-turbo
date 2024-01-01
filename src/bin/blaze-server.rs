@@ -9,7 +9,7 @@ use std::{env, process};
 fn main() -> Result<()> {
     env_logger::builder().filter_level(LevelFilter::Info).init();
     let matches = command!()
-        .name("kvs-server")
+        .name("blaze-server")
         .arg(
             arg!(--addr <IPPORT>)
                 .required(false)

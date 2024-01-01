@@ -5,7 +5,7 @@ use serde_json::Deserializer;
 use std::io::{BufReader, BufWriter, Write};
 use std::net::TcpStream;
 
-/// a tcp client which can connect to kvs-server
+/// a tcp client which can connect to blaze-server
 pub struct Client {
     reader: Deserializer<IoRead<BufReader<TcpStream>>>,
     writer: BufWriter<TcpStream>,
