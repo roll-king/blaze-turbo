@@ -80,19 +80,49 @@ impl From<serde_json::Error> for KVStoreError {
     }
 }
 
+/// Implements the conversion from `sled::Error` to `KVStoreError`.
 impl From<sled::Error> for KVStoreError {
+    /// Converts a `sled::Error` into a `KVStoreError`.
+    ///
+    /// # Arguments
+    ///
+    /// * `err` - The `sled::Error` to convert.
+    ///
+    /// # Returns
+    ///
+    /// The converted `KVStoreError`.
     fn from(err: sled::Error) -> Self {
         KVStoreError::Sled(err)
     }
 }
 
+/// Implements the conversion from `std::string::FromUtf8Error` to `KVStoreError`.
 impl From<string::FromUtf8Error> for KVStoreError {
+    /// Converts a `std::string::FromUtf8Error` into a `KVStoreError::Utf8Error`.
+    ///
+    /// # Arguments
+    ///
+    /// * `err` - The `std::string::FromUtf8Error` to convert.
+    ///
+    /// # Returns
+    ///
+    /// The converted `KVStoreError::Utf8Error`.
     fn from(err: string::FromUtf8Error) -> Self {
         KVStoreError::Utf8Error(err)
     }
 }
 
+/// Implements the conversion from `rayon::ThreadPoolBuildError` to `KVStoreError`.
 impl From<rayon::ThreadPoolBuildError> for KVStoreError {
+    /// Converts the `rayon::ThreadPoolBuildError` into `KVStoreError`.
+    ///
+    /// # Arguments
+    ///
+    /// * `err` - The `rayon::ThreadPoolBuildError` to be converted.
+    ///
+    /// # Returns
+    ///
+    /// The converted `KVStoreError` instance.
     fn from(err: rayon::ThreadPoolBuildError) -> Self {
         KVStoreError::ThreadPoolBuildError(err)
     }
