@@ -385,6 +385,11 @@ struct BufWriterWithPosition<T: Write + Seek> {
     writer: BufWriter<T>,
 }
 
+/// A buffered writer with position information.
+///
+/// This struct wraps a generic type `T` that implements the `Write` and `Seek` traits.
+/// It provides a buffered writer functionality and keeps track of the current position
+/// within the underlying writer.
 impl<T: Write + Seek> BufWriterWithPosition<T> {
     fn new(mut inner: T) -> Result<Self> {
         let position = inner.seek(SeekFrom::End(0))?;
@@ -400,12 +405,30 @@ impl<T: Write + Seek> BufWriterWithPosition<T> {
 }
 
 impl<T: Write + Seek> Write for BufWriterWithPosition<T> {
+    /// Writes a buffer to the underlying writer, updating the position accordingly.
+    ///
+    /// # Arguments
+    ///
+    /// * `buf` - The buffer to be written.
+    ///
+    /// # Returns
+    ///
+    /// Returns the number of bytes written.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if writing to the underlying writer fails.
     fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
         let len = self.writer.write(buf)?;
         self.position += len as u64;
         Ok(len)
     }
 
+    /// Flushes the underlying writer.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if flushing the underlying writer fails.
     fn flush(&mut self) -> io::Result<()> {
         self.writer.flush()
     }

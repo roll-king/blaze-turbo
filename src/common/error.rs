@@ -1,11 +1,11 @@
 use failure::Fail;
 use std::{io, string};
 
-/// well-defined Result
+/// Result type alias for the KVStoreError enum.
 pub type Result<T> = std::result::Result<T, KVStoreError>;
 
 #[derive(Fail, Debug)]
-/// well-defined Error
+/// Error type for well-defined errors
 pub enum KVStoreError {
     /// Io error
     #[fail(display = "{}", _0)]
