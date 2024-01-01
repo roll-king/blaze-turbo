@@ -36,8 +36,15 @@ cargo build --release
 ```
 
 Start the server:
-```sh
-./target/release/blaze-server
+```
+USAGE:
+    blaze-server.exe [OPTIONS]
+
+OPTIONS:
+        --addr <IPPORT>          [default: 127.0.0.1:4000]
+        --engine <ENGINENAME>    [possible values: kvs, sled]
+    -h, --help                   Print help information
+    -V, --version                Print version information
 ```
 Use the client to interact with the server:
 ```
