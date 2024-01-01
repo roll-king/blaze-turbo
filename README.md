@@ -40,8 +40,22 @@ Start the server:
 ./target/release/blaze-server
 ```
 Use the client to interact with the server:
-```sh
-./target/release/blaze-client
+```
+USAGE:
+    blaze-client.exe [SUBCOMMAND]
+
+OPTIONS:
+    -h, --help       Print help information
+    -V, --version    Print version information
+
+SUBCOMMANDS:
+    get     Get the string value of a string key. If the key does not exist, return None. Return
+                an error if the value is not read successfully.
+    help    Print this message or the help of the given subcommand(s)
+    rm      Remove a given key. Return an error if the key does not exist or is not removed
+                successfully.c
+    set     Set the value of a string key to a string. Return an error if the value is not
+                written successfully.
 ```
 ## Contributing
 
