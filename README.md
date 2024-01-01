@@ -1,10 +1,8 @@
-# blaze-turbo 
+# Blaze Turbo 
 
 ![](asset/logo.png)
 
-Blaze Turbo is a high-performance key-value database engine that serves as a multi-threaded, persistent key/value store server and client. It utilizes synchronous networking over a custom protocol.
-
-This project is an implementation of the talent plan coursework.[Talent Plan](https://github.com/OneSizeFitsQuorum/talent-plan) is an open source training program initiated by PingCAP.
+Blaze Turbo(风火轮) is a high-performance key-value database engine that serves as a multi-threaded, persistent key/value store server and client. It utilizes synchronous networking over a custom protocol.
 
 ## Features
 
@@ -51,7 +49,9 @@ Contributions to Blaze Turbo are welcome! If you find any bugs or have suggestio
 
 ## Acknowledgements
 
-Blaze Turbo is built upon the valuable lessons and materials provided by the Talent Plan training program. We would like to thank PingCAP for their initiative in creating this program.
+Blaze Turbo is built upon the valuable lessons and materials provided by the Talent Plan training program. The [Talent Plan](https://github.com/OneSizeFitsQuorum/talent-plan) is an open source training program initiated by PingCAP. We would like to thank PingCAP for their initiative in creating this program.
+
+![](https://github.com/OneSizeFitsQuorum/talent-plan/raw/master/media/talent-plan-logo.png)
 
 We used the GPT4, Copilot and DALLE4 in the process of designing the logo, writing documentation and code.
 
