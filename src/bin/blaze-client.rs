@@ -5,7 +5,7 @@ use std::{env, process};
 
 fn main() {
     let matches = command!()
-        .name("kvs-Client")
+        .name("blaze-Client")
         .subcommand(
             SubCommand::with_name("set")
                 .about("Set the value of a string key to a string. Return an error if the value is not written successfully.")
