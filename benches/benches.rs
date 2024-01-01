@@ -8,15 +8,18 @@ fn write_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("write");
     let mut rng = &mut thread_rng();
     let range = (1..100000).choose_multiple(&mut rng, 1000).to_vec();
-    group.bench_function("kvs", |b| {
+    group.bench_function("blaze", |b| {
         b.iter_batched(
             || {
+                // Create a temporary working directory
                 let temp_dir =
                     TempDir::new().expect("unable to create temporary working directory");
+                // Initialize a KvStore
                 let store = KvStore::open(temp_dir.path()).expect("unable to init KvStore");
                 store
             },
             |store| {
+                // Write key-value pairs to the KvStore
                 for i in &range {
                     store
                         .set(format!("key{}", i), format!("value{}", i))
@@ -29,13 +32,16 @@ fn write_benchmark(c: &mut Criterion) {
     group.bench_function("sled", |b| {
         b.iter_batched(
             || {
+                // Create a temporary working directory
                 let temp_dir =
                     TempDir::new().expect("unable to create temporary working directory");
+                // Initialize a SledKvsEngine
                 let store =
                     SledKvsEngine::open(temp_dir.path()).expect("unable to init SledKvsEngine");
                 store
             },
             |store| {
+                // Write key-value pairs to the SledKvsEngine
                 for i in &range {
                     store
                         .set(format!("key{}", i), format!("value{}", i))
@@ -53,7 +59,7 @@ fn read_benchmark(c: &mut Criterion) {
     let mut rng = &mut thread_rng();
     let write_range = (1..100000).choose_multiple(&mut rng, 1000).to_vec();
     let read_range = write_range.iter().choose_multiple(&mut rng, 300);
-    group.bench_function("kvs", |b| {
+    group.bench_function("blaze", |b| {
         b.iter_batched(
             || {
                 let temp_dir =
